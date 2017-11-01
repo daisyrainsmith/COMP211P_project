@@ -35,10 +35,8 @@ public class deliverable1
 
           System.out.println("Enter your username:");
           String inputName = scan.nextLine();
-          //------------------------
-          //do a existence check, if input matches a username, output the number of the username for corresponding password
-          //------------------------
-          if ()
+
+          checkUsername(inputName);
 
           String expectedPW = getPW(nameIndex);
 
@@ -65,6 +63,29 @@ public class deliverable1
           String newPassword = scan.nextLine();
           System.out.println();
           playerList.add(new Player(newUsername, newPassword));
+     }
+
+     private static void checkUsername(String inputName)
+     {
+          //------------------------
+          //do a existence check, if input matches a username, output the number of the username for corresponding password
+          //------------------------
+          int counter = 0; //to check whether there is a match
+          for (int i = 0; i < playerList.length; i++)
+          {
+              if (playerList[i].isUsername(inputName))
+              {
+                  playerNum = i; 
+                  counter++; 
+                  break;
+              }
+          }
+
+          if (counter==0)
+          {
+              //tell player: username not found. Pring options? 
+              System.out.println("Username not found");
+          }
      }
 
 
@@ -95,7 +116,7 @@ public class player
 
         public boolean isUsername(String input)
         {
-            if (input.equals(username))
+            if (input.equals(this.username))
             {
                 return true; 
             }else{return false;}

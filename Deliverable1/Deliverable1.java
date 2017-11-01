@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Ddeliverable1
 {
-	static List<Player> players = new ArrayList<Player>();
+	static List<Player> playersList = new ArrayList<Player>();
 	static Scanner scan = new Scanner(System.in);
    public static void main(String[] args)
    {
@@ -57,7 +57,7 @@ public class Ddeliverable1
       player.setName(scan.next());
       System.out.print("\t\tEnter password: ");
       player.setPassword(scan.next());
-      players.add(player);
+      playersList.add(player);
    }
 
   
@@ -72,31 +72,32 @@ public static void login()
        System.out.println("\t\t\t Login Page");
        boolean credentials = false;
        int i=0;
-       while (credentials == false && i < 3)
+       while (credentials == false && i < playersList.length)
        {
-       System.out.print("Enter your name: ");
-       String inputName = scan.next(); 
-       System.out.print("Enter your password: ");
-       String inputPassword = scan.next();
-       credentials = validateCredentials(inputName,inputPassword);
+         System.out.print("\t\t Enter your name: ");
+         String inputName = scan.next(); 
+         System.out.print("\t\t Enter your password: ");
+         String inputPassword = scan.next();
+         credentials = validateCredentials(inputName,inputPassword);
          if (credentials)
            System.out.println("Successful login.");
-         else{
+         else
+         {
            System.out.println("Try again.");
            i++;
          }
             
        }
-   
-       
   }
 
    public static boolean validateCredentials(String inputName, String inputPassword)
    {
-	   for(Player player:players) {
-		   if(player.isUsername(inputName) && player.isPassword(inputPassword)){
-			   return true;
-		   }
+	   for(Player player:playersList) 
+     {
+  		   if(player.isUsername(inputName) && player.isPassword(inputPassword))
+         {
+  			   return true;
+  		   }
 	   }
       return false;
   }

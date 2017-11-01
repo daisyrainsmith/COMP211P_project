@@ -11,7 +11,7 @@ public class deliverable1
 
   public static void main(String[] args)
    {
-       char option = 'A';
+       char option = 'x';
        System.out.println("\nWelcome to the word game!");
        System.out.println();
        while (option != 'Q')
@@ -23,7 +23,6 @@ public class deliverable1
                             + "\t\t Play the Game (P)\n"
                             + "\t\t Show the Leader Board (B) \n"
                             + "\t\t Quit (Q) \n"
-                            + "\t\t Test (T) \n"
                             + "\n\t\t Please choose an option: ");
        
           option = scan.next().charAt(0);
@@ -41,7 +40,7 @@ public class deliverable1
               break;
              case 'A':
              case 'a':
-               //print instructions
+               printAbout();
                break;
              case 'P':
              case 'p':
@@ -78,7 +77,14 @@ public class deliverable1
 //--------------------------------------------------------------------------
   public static void login() 
   {       
-       //If check to prevent repeated log-in
+      //Check to make sure registered
+      if (playersList.size() == 0)
+      {
+        System.out.print("\nNo one is registered yet.");
+        return;
+      }
+
+       //Check to prevent repeated log-in
        if(isLoggedIn)
        {
           System.out.println("\nYou are already logged in, " + loggedInPlayer.getName());
@@ -139,11 +145,38 @@ public class deliverable1
          Player player = playersList.get(i);
          if(player.isUsername(inputName) && player.isPassword(inputPassword))
          {
-           loggedInPlayer = playersList.get(i);    //NEW: updates loggedInPlayer object to keep track of the player that is logged in.  
+           loggedInPlayer = playersList.get(i);
            return true;
          }
      }
      return false;
+  }
+
+  //---------------------------------------------------------
+  //Prints an About page
+  //---------------------------------------------------------
+  public static void printAbout()
+  {
+      char option = 'A';
+      System.out.print("\nABOUT\n"
+                   + "\t Welcome to a Volcabulary Building Game 0.1.0\n" 
+                   + "\t This game helps the player to learn the definition of new words and build Volcabularies. \n"
+                   + "\t Player is given a word and is prompted to select a synonym to it from a list of words. \n"
+                   + "\n\t The game is based on a text interface. \n"
+                   + "\t Current version contains two features: registration and login. \n"
+                   + "\t Login is required for a player to start a game. \n"
+                   + "\t A player may only login after they have registered. \n"
+                   + "\t Future updates will add more features, including the game, a leaderboard and player info storage. \n"
+                   + "\n\t\t\t\t\t\t\t 2017/11/01\n\n"
+                   + "OPTIONS\n"
+                   + "\t\t Return to Main Menu (M)\n");
+
+      while (option != 'm' && option != 'M')
+      {
+            System.out.print("\nPleas choose an option: "); 
+            option = scan.next().charAt(0);
+      }
+      
   }
 
   public static void terminate()

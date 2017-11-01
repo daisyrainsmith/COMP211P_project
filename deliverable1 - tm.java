@@ -38,20 +38,13 @@ public class deliverable1
 
           checkUsername(inputName);
 
-          String expectedPW = getPW(nameIndex);
+          //now the playerNum is found, promt input of password and compare
 
-          System.out.println("Enter password: ");
-          String psassword = scan.nextLine();
-          //compare password and expectedPW
-          while(password != expectedPW)
-          {
-            System.out.println("Wrong psassword, try again: ");
-            String psassword = scan.nextLine();
-          }
+          System.out.println("Enter your password");
+          String inputPW = scan.nextLine();
 
-          if(password == expectedPW)
-          {
-            System.out.println("Welcome")
+          checkPW(inputPW, playerNum); 
+          
           }
      }
 
@@ -65,6 +58,7 @@ public class deliverable1
           playerList.add(new Player(newUsername, newPassword));
      }
 
+
      private static void checkUsername(String inputName)
      {
           //------------------------
@@ -76,6 +70,7 @@ public class deliverable1
               if (playerList[i].isUsername(inputName))
               {
                   playerNum = i; 
+                  //problem with playerNum, fix with adding output int for this method?
                   counter++; 
                   break;
               }
@@ -83,9 +78,18 @@ public class deliverable1
 
           if (counter==0)
           {
-              //tell player: username not found. Pring options? 
+              //tell player: username not found. Print options menu again. 
+              Login(); //temporary fix
               System.out.println("Username not found");
           }
+     }
+
+     private static void checkPW(String inputPW, int playerNum)
+     {
+          if(playerList[playerNum].isPassword(inputPW)){
+            //welcome!
+          }
+
      }
 
 

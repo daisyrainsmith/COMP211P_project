@@ -1,7 +1,5 @@
 ## COMP211P Project Report – Deliverable1
 
-*A copy of this project can be found on [GitHub](https://github.com/merlin217/COMP211P_project/tree/master/Deliverable1)*
-
 ### Instructions on how to compile and run
 
 To compile with the Command Line Terminal:

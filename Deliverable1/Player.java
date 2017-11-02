@@ -1,5 +1,5 @@
 class Player
-     {
+{
        
        private String name;
        private String password;
@@ -9,27 +9,27 @@ class Player
 
        public Player(String aName, String aPassword)
        {
-         sername = aName; 
-         password = aPassword;
-         score = 0; 
+           name = aName; 
+           password = aPassword;
+           score = 0; 
        }
 
        public String getName() {
-         return name;
+           return name;
        }
        public void setName(String name) {
-          this.name = name;
+           this.name = name;
        }
        
        public String getPassword() {
-         return password;
+           return password;
        }
        public void setPassword(String password) {
-         this.password = password;
+           this.password = password;
        }
 
         public int getScore() {
-          return score;
+            return score;
         }
 
         public boolean isUsername(String input)
@@ -50,4 +50,4 @@ class Player
 
         
 
-     }
+}

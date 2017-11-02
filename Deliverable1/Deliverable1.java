@@ -64,11 +64,27 @@ public class deliverable1
   //--------------------------------------------------------------------------
   public static void inputDetails()
   {
-      Player player = new Player();
+      String inputName, inputPW; 
+
       System.out.print("\t\t Enter name: ");
-      player.setName(scan.next());
+      inputName = scan.next();
+      //making sure that the name is not already taken
+      while (isTaken(inputName))
+      {
+          System.out.print("\t\t Name taken, please enter another: ");
+          inputName = scan.next();
+      }
+
       System.out.print("\t\t Enter password: ");
-      player.setPassword(scan.next());
+      inputPW = scan.next();
+      //making sure the pssword is longer than 6 digits
+      while (inputPW.length() < 6)
+      {
+          System.out.print("\t\t Please set a password longer than 6 digits: ");
+          inputPW = scan.next();
+      }
+
+      Player player = new Player(inputName,inputPW); 
       playersList.add(player);
       System.out.println("\n\t\t Registration successful. ");
   }
@@ -138,7 +154,7 @@ public class deliverable1
        isLoggedIn = false;
        System.out.println("\n\t\tYou are logged out.");
        return;
-        }
+  }
   
   
   //---------------------------------------------
@@ -158,23 +174,6 @@ public class deliverable1
           System.out.println("\nYou are not logged in yet. Please register or login first. "); 
           return; 
       }
-  }
-
-//-------------------------------------------------
-//Performs a credentials check on the input name and password.
-//-------------------------------------------------
-  public static boolean validateCredentials(String inputName, String inputPassword)
-  {
-     for(int i = 0; i < playersList.size(); i++) 
-     {
-         Player player = playersList.get(i);
-         if(player.isUsername(inputName) && player.isPassword(inputPassword))
-         {
-           loggedInPlayer = playersList.get(i);
-           return true;
-         }
-     }
-     return false;
   }
 
   //---------------------------------------------------------
@@ -214,6 +213,39 @@ public class deliverable1
           }
 
       } while (option != 'm' && option != 'M');
+  }
+
+  //---------------------------------------
+  //Check if input string is the name of an existing player object
+  //---------------------------------------
+  public static boolean isTaken(String aName)
+  {
+      for (int i = 0; i < playersList.size(); i++)
+      {
+          Player player = playersList.get(i);
+          if(player.isUsername(aName))
+          {
+              return true;
+          }
+      }
+      return false; 
+  }
+
+  //-------------------------------------------------
+  //Check if the input name and password corresponds to a registered player
+  //-------------------------------------------------
+  public static boolean validateCredentials(String inputName, String inputPassword)
+  {
+     for(int i = 0; i < playersList.size(); i++) 
+     {
+         Player player = playersList.get(i);
+         if(player.isUsername(inputName) && player.isPassword(inputPassword))
+         {
+           loggedInPlayer = playersList.get(i);
+           return true;
+         }
+     }
+     return false;
   }
 
   //---------------------------------------------

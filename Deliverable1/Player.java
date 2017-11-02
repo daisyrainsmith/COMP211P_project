@@ -7,6 +7,13 @@ class Player
 
        public Player(){};
 
+       public Player(String aName, String aPassword)
+       {
+         sername = aName; 
+         password = aPassword;
+         score = 0; 
+       }
+
        public String getName() {
          return name;
        }

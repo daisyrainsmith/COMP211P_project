@@ -174,7 +174,7 @@ public class Deliverable1 {
   public static void printAbout() {
     char option = 'A';
     System.out.print("\nABOUT\n"
-                 + "\t Welcome to a Volcabulary Building Game 0.1.0\n\n" 
+                 + "\t Welcome to a Vocabulary Building Game 0.1.0\n\n" 
                  + "\t This game helps the player to learn the definition \n\t of new words and build Volcabularies. \n"
                  + "\t The player is given a word and is prompted to select \n\t a synonym to it from a list of words. \n"
                  + "\t The game is based on a text interface. \n"

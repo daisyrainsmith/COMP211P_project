@@ -94,6 +94,6 @@ New features are added as a result of thetesting process.
 
 ### Team Member Contribution
 
-merlin217 : 10/20
+[Tom Mo](https://github.com/merlin217) : 10/20
 
-daisyrainsmith: 10/20
+[daisyrainsmith](https://github.com/daisyrainsmith): 10/20

@@ -10,14 +10,13 @@ public class Application {
   static Player loggedInPlayer;
 
   public static void main(String[] args) {
-    //---------------------
-    // TODO: imports the playerList from the playerlist.txt file
-    //---------------------
-    playersList = FileMethods.syncPlayerlist();
 
-    //--------------------tester, prints everything in playersList , to be deleted--------------
+    //NEWCODE: imports playersList from the file
+    playersList = FileMethods.syncPlayerlist("playerlist.csv");
+
+    //NEWCODE: ---------------tester, prints everything in playersList , to be deleted--------------
     for (int i = 0; i < playersList.size(); i++) {
-      String name = playersList.get(i).getName();
+      String name = playersList.get(i).getUsername();
       String PW = playersList.get(i).getPassword();
       System.out.println("DEBUG: " + name + ", " + PW); 
     }
@@ -36,7 +35,7 @@ public class Application {
     System.out.println();
     while (option != 'Q' && option != 'q') {
       System.out.print("\nMAIN MENU " 
-                        + (isLoggedIn ? "\t\t " + loggedInPlayer.getName() + "'s game\n" : "\n")
+                        + (isLoggedIn ? "\t\t " + loggedInPlayer.getUsername() + "'s game\n" : "\n")
                         + "\t\t Login (L) \n"
                         + "\t\t Register (R) \n"
                         + "\t\t About (A) \n"
@@ -90,7 +89,7 @@ public class Application {
 
     //Check to prevent repeated log-in
     if (isLoggedIn) {
-      System.out.println("\n\t\tYou are already logged in, " + loggedInPlayer.getName());
+      System.out.println("\n\t\tYou are already logged in, " + loggedInPlayer.getUsername());
       System.out.print("\t\tWould you like to logout(Y) or Stay loged in(Any Other Key): ");
       char logoutAnswer = scan.next().charAt(0);
       if ((logoutAnswer == 'Y') || (logoutAnswer == 'y')) {
@@ -114,7 +113,7 @@ public class Application {
       if (credentialsValid) {
         isLoggedIn = true; 
         System.out.println("Successful login.");
-        System.out.println("\nWelcome, " + loggedInPlayer.getName()); 
+        System.out.println("\nWelcome, " + loggedInPlayer.getUsername()); 
       } else if (i < NUMBER_OF_TRIES) {
         System.out.println("Try again.\n");
       } else {
@@ -173,9 +172,11 @@ public class Application {
     Player player = new Player(inputName,inputPW); 
     playersList.add(player);
     //------------------------
-    // TODO: add the player to the player list file
+    // NEWCODE: add the player to the player list file
+    //      May be redundant due to overwritePlayerListTo() method
+    //      Coule be desirable to keep this method in case of unexpected crashes. 
     //------------------------
-    //addToPlayerListFile(player); 
+    FileMethods.addPlayerTo("playerlist.csv", player);
     System.out.println("\n\t\t Registration successful. ");
 
   }
@@ -249,12 +250,77 @@ public class Application {
   //---------------------------------------------
   public static void terminate()
   {
+    //---------------------
+    //NEWCODE: at the end of the game, updates playerlist.txt
+    //---------------------
+    FileMethods.overwritePlayerListTo("playerlist.csv", playersList);
     System.out.println("PROGRAM ENDED");
     System.exit(0);
-    //---------------------
-    //TODO: at the end of the game, updates playerlist.txt
-    //---------------------
-    //overwritePlayerListFile(playerList);
   }
+
+
+
+
+
+
+
+/*
+
+  //--------
+  // TODO: printQerstions methods and associated ones, to print questions and interact based on the array of keywords
+  //--------
+  
+  public static void printQustions(ArrayList<String> randomisedQuestionList) {
+    for (int i = 0; i = randomisedQuestionList.size(); i++) {
+      String[] keywords = randomisedQuestionList.get(i);
+      questionLogic(keywords);
+    }
+  }
+
+
+  //IDEA: might be a good idea to create a question class, and a questionObjectArrayList for future features
+  public static void questionLogic(String[] keywords) {
+    //TODO: randomise keywords[1-4] to String[] rdmKeywords[0-3].
+    System.out.println("\tWhat's the synonym for " + keywords[0] + "? ");
+    System.out.print("\t\t(A) " + rdmKeywords[0] + "\n"
+                    + "\t\t(B) " + rdmKeywords[1] + "\n"
+                    + "\t\t(C) " + rdmKeywords[2] + "\n"
+                    + "\t\t(D) " + rdmKeywords[3] + "\n"
+                    + "\n\t\t\t\tSkip (S)\n"
+                    + "\t\t\t\tMain Menu (M)\n"
+                    + "\t\t\t\tQuit (Q)\n");
+
+    Scanner scan = new Scanner(System.in);
+    char option = 'x';
+    while (option != 'S' || option != 's') {
+      option = scan.next().CharAt(0);
+      case (option) {
+        case 'A': 
+        case 'a':
+          isCorrect(rdmKeywords[0], keywords); 
+          break;
+        case 'B': 
+        case 'b':
+          isCorrect(rdmKeywords[1], keywords); 
+          break;
+        case 'C': 
+        case 'c':
+          isCorrect(rdmKeywords[2], keywords); 
+          break; 
+        case 'D': 
+        case 'd':
+          isCorrect(rdmKeywords[3], keywords); 
+          break;
+        case 'S': 
+        case 's':
+        case 'Q': 
+        case 'q':
+        case 'M': 
+        case 'm':
+      }
+    }
+  }
+
+*/
 
 }

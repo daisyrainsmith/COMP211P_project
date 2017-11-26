@@ -28,7 +28,7 @@ public class FileMethods {
     for (int i = 0; i < playerStringList.size(); i++)  {
       String playerInfo = playerStringList.get(i);
       String[] infoArray = playerInfo.split(",");
-      Player nextPlayer = new Player(infoArray[0], infoArray[1], infoArray[2], infoArray[3], infoArray[4], infoArray[5]);
+      Player nextPlayer = new Player(infoArray);
       playerObjectList.add(nextPlayer);
     }
     return playerObjectList;

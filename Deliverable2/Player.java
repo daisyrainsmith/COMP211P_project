@@ -5,31 +5,36 @@ class Player {
   private String surname;
   private String username;
   private String password;
-  private int gamePlayed;
+  private int gamesPlayed;
   private int score;
-  private int currentScore; 
 
   //constructors
-  public Player(String aFirstName, String aSurname, String aUsername, String aPassword, String stringGamePlayed, String stringScore) {
+
+  // The base constructor that the oter constructors below will call using "this()"
+  public Player(String aFirstName, String aSurname, String aUsername, String aPassword, int intGamesPlayed, int intScore) {
     firstName = aFirstName;
     surname = aSurname;
     username = aUsername; 
     password = aPassword;
-    gamePlayed = Integer.parseInt(stringGamePlayed);
-    score = Integer.parseInt(stringScore); 
+    gamesPlayed = intGamesPlayed;
+    score = intScore; 
   }
 
+  // the constructor used for creating a player object form the info read from the file
+  public Player(String[] infoArray) {
+    this(infoArray[0], infoArray[1], infoArray[2], infoArray[3], Integer.parseInt(infoArray[4]), Integer.parseInt(infoArray[5]));
+  }
+
+  // empty constructor
   public Player(){
-    this("noFirstName", "noSurname", "noUsername", "88888888", "0", "0"); 
+    this("noFirstName", "noSurname", "noUsername", "88888888", 0, 0); 
   };
 
+  //constructor for username-password login
   public Player(String aUsername, String aPassword) {
-    this("noFirstName", "noSurname", aUsername, aPassword, "0", "0"); 
+    this("noFirstName", "noSurname", aUsername, aPassword, 0, 0); 
   }
 
-  public Player(String aUsername, String aPassword, String stringScore) {
-    this("noFirstName", "noSurname", aUsername, aPassword, "0", stringScore); 
-  }
 
   //METHODS: 
   public String getFirstName() {
@@ -48,6 +53,13 @@ class Player {
     return score;
   }
 
+
+  public void setFirstName(String aFirstName) {
+    this.firstName = aFirstName;
+  }
+  public void setSurname(String aSurname) {
+    this.surname = aSurname;
+  }
   public void setName(String aUsername) {
     this.username = aUsername;
   }
@@ -56,14 +68,11 @@ class Player {
   }
   public void setScore(int aScore) {
     this.score = aScore;
-  }
+  };
 
-  public void updateScore(int aCurrentScore) {
-    this.score += aCurrentScore;
-  }
 
   public String toString() {
-    String output = firstName + "," + surname + "," + username + "," + password + "," + Integer.toString(gamePlayed) + "," + Integer.toString(score);
+    String output = firstName + "," + surname + "," + username + "," + password + "," + Integer.toString(gamesPlayed) + "," + Integer.toString(score);
     return output; 
   }
 
@@ -80,11 +89,5 @@ class Player {
     else
       return false;
   }
-
-  //-----------------
-  //TODO: 
-  //setScore()
-  //Player (String aUsername, String aPassword, int aScore) CONSTRUCTOR
-  //-----------------
 
 }

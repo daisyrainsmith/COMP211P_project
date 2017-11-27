@@ -5,6 +5,11 @@ import java.util.*;
 
 public class GameMethods {
 
+  //----------------------------------------------------------
+  // METHOD FOR A NEW QUIZ GAME INSTANCE
+  //     creates an arraylist of Question objects and ask each
+  //      keeps track of player's results using array of booleans
+  //----------------------------------------------------------
   public static void play(Player player) {
     int score = 0; 
     ArrayList<Boolean> resultsList = new ArrayList<Boolean>(); 
@@ -34,7 +39,7 @@ public class GameMethods {
   } 
 
   //-----------------
-  //  Placeholder, will print more detailed feedbackin future update
+  // Prints the current score and whether the question answered is correct
   //------------------
   public static void feedbackPage(boolean correctOrNot, int score) {
     System.out.println((correctOrNot? "Correct! " : "Wrong! ") 

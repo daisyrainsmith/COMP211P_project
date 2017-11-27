@@ -54,7 +54,7 @@ public class FileMethods {
   }
 
   //---------------------------
-  //APPEND newly registered player info into the "playerlist.csv" 
+  // APPEND newly registered player info into the "playerlist.csv" 
   //--------------------------
   public static void addPlayerTo(String fileName, Player aPlayer){
     String playerString = aPlayer.toString();
@@ -62,7 +62,7 @@ public class FileMethods {
   }
 
   //-----------------
-  //Appends a string to the designated file
+  // Appends a string to the designated file
   //-----------------
   public static void addToFile(String fileName, String content) {
     PrintWriter outputStream = null;
@@ -79,7 +79,7 @@ public class FileMethods {
   }
 
   //------------------------------
-  // At the end of the game, write the (updated) player information back to the file. 
+  // Called before application exits, write the (updated) player information back to the file. 
   //------------------------------
   public static void overwritePlayerListTo(String fileName, ArrayList<Player> playerObjectList){
     ArrayList<String> playerStringList = new ArrayList<String>();
@@ -130,7 +130,6 @@ public class FileMethods {
     }
    return QuestionObjects;
   }
-
 
 }
 

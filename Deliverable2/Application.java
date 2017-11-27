@@ -82,7 +82,7 @@ public class Application {
     //Check to prevent repeated log-in
     if (isLoggedIn) {
       System.out.println("\n\t\tYou are already logged in, " + loggedInPlayer.getUsername());
-      System.out.print("\t\tWould you like to logout(Y) or Stay loged in(Any Other Key): ");
+      System.out.print("\t\tWould you like to logout(Y) or Stay logged in(Any Other Key): ");
       char logoutAnswer = scan.next().charAt(0);
       if ((logoutAnswer == 'Y') || (logoutAnswer == 'y')) {
           logout();

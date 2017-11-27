@@ -20,6 +20,18 @@ public class Question
 
   }
   
+  public Question(String[] input)
+  {
+    if(input.length != 5) {
+      throw new RuntimeException("Invalid array length");
+    }
+    question = input[1];
+    answerIndex = 3;
+    wordList = new String[] {input[2], input[3], input[4], input[5]};  
+    shuffle(wordList);
+    
+  }
+  
    public Question()
   {
     this("no question", "no word1", "no word2", "no word3", "no answer");

@@ -77,6 +77,9 @@ class Player {
   public void updateScore(int aScore) {
     this.score += aScore;
   }
+  public void playedAGame() {
+    this.gamesPlayed++;
+  }
 
   public String toString() {
     String output = firstName + "," + surname + "," + username + "," + password + "," + Integer.toString(gamesPlayed) + "," + Integer.toString(score);

@@ -25,6 +25,7 @@ public class GameMethods {
 
     System.out.println("Final score: " + score); 
     Player.updateScore(score);
+    Player.playedAGame();
   }
 
   public static boolean runQuestion (Question theQuestion) {

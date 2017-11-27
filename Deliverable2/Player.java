@@ -82,7 +82,8 @@ class Player {
   }
 
   public String toString() {
-    String output = firstName + "," + surname + "," + username + "," + password + "," + Integer.toString(gamesPlayed) + "," + Integer.toString(score);
+    String output = firstName + "," + surname + "," + username + "," + password + "," 
+                    + Integer.toString(gamesPlayed) + "," + Integer.toString(score);
     return output; 
   }
 

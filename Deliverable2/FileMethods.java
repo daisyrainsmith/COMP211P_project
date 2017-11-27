@@ -1,5 +1,5 @@
 //--------------------------------
-// A library of the static methods used when a quiz instance starts
+// A library of all the static methods used for file I/O  
 //--------------------------------
 import java.util.*; 
 import java.io.PrintWriter;
@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 public class FileMethods {
 
   //---------------
-  //Syncs playerslist arrayList with the file "playerlist.csv"
+  // Returns an arraylist of playerobjects read from designated file
   //---------------
   public static ArrayList<Player> syncPlayerlist(String fileName){
     ArrayList<Player> playerObjectList = new ArrayList<Player>();
@@ -53,10 +53,9 @@ public class FileMethods {
     return stringList;
   }
 
-
+  //---------------------------
   //APPEND newly registered player info into the "playerlist.csv" 
-  //    addPlayerTo(), may be redundant since overwritePlayerListTo() updates the file everytime program exits? 
-  //    Coule be desirable to keep this method in case of unexpected crashes. 
+  //--------------------------
   public static void addPlayerTo(String fileName, Player aPlayer){
     String playerString = aPlayer.toString();
     addToFile(fileName, playerString);

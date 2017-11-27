@@ -28,7 +28,7 @@ public class Application {
     while (option != 'Q' && option != 'q') {
       System.out.print("\nMAIN MENU " 
                         + (isLoggedIn ? "\t\t " + loggedInPlayer.getUsername() + "'s game\n" : "\n")
-                        + "\t\t Login (L) \n"
+                        + "\t\t Login/Logout (L) \n"
                         + "\t\t Register (R) \n"
                         + "\t\t About (A) \n"
                         + "\t\t Play the Game (P)\n"
@@ -89,6 +89,7 @@ public class Application {
       }
       return;
     }
+
     System.out.println("\nLOGIN PAGE");
     boolean credentialsValid = false;
     final int NUMBER_OF_TRIES = 3;
@@ -161,12 +162,14 @@ public class Application {
         inputPW = scan.next();
     }
 
-    Player player = new Player(inputName,inputPW); 
+    Player player = new Player(inputName,inputPW);
+    // NEWCODE: set the real name of this player class; 
+    promptRealName(player);
     playersList.add(player);
     //------------------------
     // NEWCODE: add the player to the player list file
     //      May be redundant due to overwritePlayerListTo() method
-    //      Coule be desirable to keep this method in case of unexpected crashes. 
+    //      Kept this method in case of unexpected crashes. 
     //------------------------
     FileMethods.addPlayerTo("playerlist.csv", player);
     System.out.println("\n\t\t Registration successful. ");
@@ -174,7 +177,7 @@ public class Application {
   }
 
   //---------------------------------------
-  //  Check if input string is the name of an existing player object
+  //  NEWCODE: Check if input string is the name of an existing player object
   //---------------------------------------
   public static boolean isTaken(String aName) {
 
@@ -185,6 +188,47 @@ public class Application {
       }
     }
     return false; 
+  }
+
+  //-------------------------
+  // NEWCODE: Prompts whether a player wants to enter real name
+  //-------------------------
+  public static void promptRealName(Player aPlayer) {
+    System.out.print("\n\t\t Would you like to enter your real name? (Y/N): ");
+    boolean inputError = false; 
+    do {
+      char yesOrNo = scan.next().charAt(0);
+      switch (yesOrNo) {
+        case 'Y':
+        case 'y':
+          enterRealName(aPlayer);
+          break;
+        case 'N':
+        case 'n':
+          return;
+        default:
+          inputError = true; 
+          System.out.print("\n\t\t Input error, try again (Y/N): ");
+      }
+    } while (inputError);
+    return;
+  }
+
+  //-----------------------
+  // NEWCODE: Sets real name for a player
+  //----------------------
+  public static void enterRealName(Player aPlayer) {
+    String inputName; 
+
+    System.out.print("\t\t Enter first name: ");
+    inputName = scan.next();
+    aPlayer.setFirstName(inputName);
+
+    System.out.print("\t\t Enter surname: ");
+    inputName = scan.next();
+    aPlayer.setSurname(inputName);
+
+    return;
   }
 
   //---------------------------------------------------------
@@ -239,8 +283,7 @@ public class Application {
   //---------------------------------------------
   //  Ends the program
   //---------------------------------------------
-  public static void terminate()
-  {
+  public static void terminate() {
     //---------------------
     // NEWCODE: at the end of the game, updates playerlist.txt
     //---------------------

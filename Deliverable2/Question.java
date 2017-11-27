@@ -1,6 +1,7 @@
+//--------------------------------
+// Question class. Creates a question with a list of randmoised choices.
+//--------------------------------
 import java.util.*;
-
-//EDIT NOTE: Added main method for testing, and getters
 
 public class Question
 {
@@ -69,84 +70,15 @@ public class Question
     return wordList;
   }
 
-
   public boolean isAnswer(String choice) {
     if (choice == this.answer) {
       return true;
     }
     return false; 
   }
-  //Prints out the question with the options
-  //Scans the input
-  //If input = method getPoints returns 1
 
   public String toString() {
     String str = "DEBUG:  Q: " + question + "A: " + answer + "\n" + wordList[0] + wordList[1] + wordList[2] + wordList[3]; 
     return str;
   }
-
-
-
-  //   //a main method to test the question class. 
-  // public static void main(String[] arg) {
-  //   Scanner scan = new Scanner(System.in);
-
-  //   Question Question1 = new Question();
-  //   System.out.println("DEBUG: answer is " + Question1.getAnswer());
-
-  //   String[] choices = Question1.getWordList();   
-
-  //   System.out.println(Question1.getQuestion() + ": find its synonym: ");
-  //   System.out.print("\nA: " + choices[0]
-  //                   +"\nB: " + choices[1]
-  //                   +"\nC: " + choices[2]
-  //                   +"\nD: " + choices[3]
-  //                   +"\nQuit (Q)");
-
-  //   char option = 'x';
-  //   if (option != 'Q' && option != 'q') {
-  //     System.out.print("\n\n\tPlease Enter: ");
-  //     option = scan.next().charAt(0);
-  //     switch(option) {
-  //       case 'A':
-  //       case 'a':
-  //         if (Question1.isAnswer(choices[0])) {
-  //           System.out.println("correct");
-  //         } else {
-  //           System.out.println("wrong");
-  //         }          
-  //         break; 
-  //       case 'B':
-  //       case 'b':
-  //         if (Question1.isAnswer(choices[1])) {
-  //           System.out.println("correct");
-  //         } else {
-  //           System.out.println("wrong");
-  //         }          
-  //         break;
-  //       case 'C':
-  //       case 'c':
-  //         if (Question1.isAnswer(choices[2])) {
-  //           System.out.println("correct");
-  //         } else {
-  //           System.out.println("wrong");
-  //         }         
-  //         break;
-  //       case 'D':
-  //       case 'd':
-  //         if (Question1.isAnswer(choices[3])) {
-  //           System.out.println("correct");
-  //         } else {
-  //           System.out.println("wrong");
-  //         }
-  //         break;
-  //       case 'Q': 
-  //       case 'q': 
-  //         System.exit(0);
-  //         break;
-  //     }
-  //   }
-  // }
-
-  
 }

@@ -10,17 +10,8 @@ public class Application {
   static Player loggedInPlayer;
 
   public static void main(String[] args) {
-
-    //NEWCODE: imports playersList from the file
+    //NEWCODE: Syncs playerslist arrayList with the file "playerlist.csv"
     playersList = FileMethods.syncPlayerlist("playerlist.csv");
-
-    //NEWCODE: ---------------tester, prints everything in playersList , to be deleted--------------
-    for (int i = 0; i < playersList.size(); i++) {
-      String name = playersList.get(i).getUsername();
-      String PW = playersList.get(i).getPassword();
-      System.out.println("DEBUG: " + name + ", " + PW); 
-    }
-    //-------------------------------------
 
     //starts the menu
     mainMenu();  
@@ -28,6 +19,7 @@ public class Application {
 
   //--------------------------------------------------------------------------
   //  THE MAIN MENU
+  //    Kept as a while loop so that whenever another method ends it returns to the main menu.
   //--------------------------------------------------------------------------
   public static void mainMenu() {
     char option = 'x';
@@ -100,7 +92,7 @@ public class Application {
     System.out.println("\nLOGIN PAGE");
     boolean credentialsValid = false;
     final int NUMBER_OF_TRIES = 3;
-    //If login failed for 3 times, returns to main menu
+    // If login failed for 3 times, returns to main menu
     int i=0;
     while (credentialsValid == false && i < NUMBER_OF_TRIES) {
       i++;
@@ -156,14 +148,14 @@ public class Application {
 
     System.out.print("\t\t Enter name: ");
     inputName = scan.next();
-    //making sure that the name is not already taken
+    // making sure that the name is not already taken
     while (isTaken(inputName)) {
         System.out.print("\t\t Name taken, please enter another: ");
         inputName = scan.next();
     }
     System.out.print("\t\t Enter password: ");
     inputPW = scan.next();
-    //making sure the pssword is longer than 6 digits
+    // making sure the pssword is longer than 6 digits
     while (inputPW.length() < 6) {
         System.out.print("\t\t Please set a password longer than 6 digits: ");
         inputPW = scan.next();
@@ -196,7 +188,7 @@ public class Application {
   }
 
   //---------------------------------------------------------
-  //Prints an About page
+  // Prints an About page
   //---------------------------------------------------------
   public static void printAbout() {
     char option = 'A';
@@ -231,8 +223,8 @@ public class Application {
   }
 
   //---------------------------------------------
-  //    Placeholder for the game method. Current function: 
-  //    Checks if player is logged in
+  //  METHOD FOR THE ACTUAL QUIZ
+  //    Checks if player is logged in, then starts the quiz. 
   //---------------------------------------------
   public static void play() {
     if(isLoggedIn) {
@@ -250,7 +242,7 @@ public class Application {
   public static void terminate()
   {
     //---------------------
-    //NEWCODE: at the end of the game, updates playerlist.txt
+    // NEWCODE: at the end of the game, updates playerlist.txt
     //---------------------
     FileMethods.overwritePlayerListTo("playerlist.csv", playersList);
     System.out.println("PROGRAM ENDED");

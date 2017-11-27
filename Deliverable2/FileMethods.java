@@ -1,8 +1,6 @@
-//
-// PROBLEM: adding element into an arraylist changes all elemts of an arraylist
-// REASON: CLASS variables should not be static
-//The solution is simple - don't use the static keywords for fields in your class unless you actually want the values shared between every instance of that class.
-
+//--------------------------------
+// A library of the static methods used when a quiz instance starts
+//--------------------------------
 import java.util.*; 
 import java.io.PrintWriter;
 import java.io.FileInputStream;
@@ -14,11 +12,6 @@ public class FileMethods {
 
   //---------------
   //Syncs playerslist arrayList with the file "playerlist.csv"
-  //  csv format: realFirstname[0],
-  //               realSurname[1],               
-  //                userName[2],
-  //                password[3],
-  //                score[4]
   //---------------
   public static ArrayList<Player> syncPlayerlist(String fileName){
     ArrayList<Player> playerObjectList = new ArrayList<Player>();
@@ -37,7 +30,7 @@ public class FileMethods {
   }
 
   //----------
-  //Reads all the content from a file as an ArrayList of Strings
+  // Reads all the content from a file as an ArrayList of Strings
   //-----------
   public static ArrayList<String> readListFromFile(String fileName) {
 
@@ -69,9 +62,9 @@ public class FileMethods {
     addToFile(fileName, playerString);
   }
 
-  //----------
+  //-----------------
   //Appends a string to the designated file
-  //-----------
+  //-----------------
   public static void addToFile(String fileName, String content) {
     PrintWriter outputStream = null;
     try
@@ -86,9 +79,9 @@ public class FileMethods {
     outputStream.close();
   }
 
-
-  //at the end of the game, write the (updated) player information back to the file. 
-  //Overwrite the file you read at the beginning of the game.
+  //------------------------------
+  // At the end of the game, write the (updated) player information back to the file. 
+  //------------------------------
   public static void overwritePlayerListTo(String fileName, ArrayList<Player> playerObjectList){
     ArrayList<String> playerStringList = new ArrayList<String>();
     for (int i = 0; i < playerObjectList.size(); i++){
@@ -99,7 +92,7 @@ public class FileMethods {
   }
 
   //------------------------
-  //Overwrites an ArrayList of strings to the designated file
+  // Overwrites an ArrayList of strings to the designated file
   //------------------------
   public static void overwriteToFile(String fileName, ArrayList<String> contentList) {
     PrintWriter outputStream = null;
@@ -118,7 +111,7 @@ public class FileMethods {
   }
 
   //---------------------
-  //to be called by the start of a game instance to return an random set of questions, used by printQuestions() method in Application
+  // To be called by the start of a GameMethods.play() instance to return an random set of questions, used by printQuestions() method in Application
   //---------------------
   public static ArrayList<Question> getQuestionsFromFile(String fileName) {
     int numOfQuestions = 10;

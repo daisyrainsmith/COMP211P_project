@@ -1,3 +1,6 @@
+//--------------------------------
+// Player class, records name, password and score of a player
+//--------------------------------
 class Player {
 
   //attributes

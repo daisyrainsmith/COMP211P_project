@@ -1,5 +1,6 @@
-//Need
-
+//--------------------------------
+// A library of all the static methods used for file I/O
+//--------------------------------
 import java.util.*;
 
 public class GameMethods {

@@ -11,7 +11,9 @@ class Player {
   private int gamesPlayed;
   private int score;
 
-  //constructors
+  //--------------------------------
+  //CONSTRUCTORS
+  //--------------------------------
 
   // The base constructor that the oter constructors below will call using "this()"
   public Player(String aFirstName, String aSurname, String aUsername, 
@@ -40,8 +42,9 @@ class Player {
     this("noFirstName", "noSurname", aUsername, aPassword, 0, 0); 
   }
 
-
-  //METHODS: 
+  //----------------------------------
+  //METHODS: getters and setters
+  //---------------------------------- 
   public String getFirstName() {
     return firstName; 
   }
@@ -74,6 +77,10 @@ class Player {
   public void setScore(int aScore) {
     this.score = aScore;
   }
+  
+  //---------------------------------------
+  //OTHER METHODS
+  //---------------------------------------
   public void updateScore(int aScore) {
     this.score += aScore;
   }

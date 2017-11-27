@@ -6,11 +6,10 @@ public class Question
   private String question;
   private int answerIndex;
   private String[] wordList;
-  
-  //Fed a list of 5 words - code will be in Application.java
  
-  //Stores first word as question
-  //Stores last word as answer
+  //-----------------------------------------------------------------------------------------
+  //QUESTION CONSTRUCTORS, set first word as variable question, and last word as answer
+  //-----------------------------------------------------------------------------------------
   public Question(String aQuestion, String aWord1, 
                   String aWord2, String aWord3, String anAnswer) {
     question = aQuestion;
@@ -33,8 +32,10 @@ public class Question
     this("no question", "no word1", "no word2", "no word3", "no answer");
   }
   
-  //Swaps the answer with a random word in the word list
+  //----------------------------------------------------------------------
+  //SHUFFLE METHOD -Swaps the answer with a random word in the wordList
   //and stores the new index of the answer
+  //----------------------------------------------------------------------
   public void shuffle(String[] array) {
     // Get a random index of the array.
     int random = (int) (Math.random() * 4);
@@ -45,10 +46,12 @@ public class Question
     answerIndex = random;
    }
     
-  //Method to ask the question
-  //Prints out the question with the options
+  //-----------------------------------------------------------------------
+  //ASK METHOD - Prints out the question and returns a boolean representing
+  //whether answer is correct
+  //-----------------------------------------------------------------------
   public boolean ask() {
-      System.out.println(question + ": find its synonym: ");
+      System.out.println(question + ": Which of the following words has the \nsame meaning? ");
       for(int i=0;i<wordList.length;i++){
       System.out.print("\n\t\t" + (i+1) + ": " + wordList[i]);
       }
@@ -62,7 +65,8 @@ public class Question
          System.out.print("\t\t(- this is not a number!)\n\n");
          return ask();
       }
+      if (givenIndex == 0)
+      System.exit(0);
       return (givenIndex-1 == this.answerIndex);
     }
-    
 }

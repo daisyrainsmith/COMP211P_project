@@ -10,7 +10,7 @@ public class Application {
   static Player loggedInPlayer;
 
   public static void main(String[] args) {
-    //NEWCODE: Syncs playerslist arrayList with the file "playerlist.csv"
+    // Syncs playerslist arrayList with the file "playerlist.csv"
     playersList = FileMethods.syncPlayerlist("playerlist.csv");
 
     //starts the menu
@@ -163,11 +163,11 @@ public class Application {
     }
 
     Player player = new Player(inputName,inputPW);
-    // NEWCODE: set the real name of this player class; 
+    //  set the real name of this player class; 
     promptRealName(player);
     playersList.add(player);
     //------------------------
-    // NEWCODE: add the player to the player list file
+    //  add the player to the player list file
     //      May be redundant due to overwritePlayerListTo() method
     //      Kept this method in case of unexpected crashes. 
     //------------------------
@@ -177,7 +177,7 @@ public class Application {
   }
 
   //---------------------------------------
-  //  NEWCODE: Check if input string is the name of an existing player object
+  //   Check if input string is the name of an existing player object
   //---------------------------------------
   public static boolean isTaken(String aName) {
 
@@ -191,7 +191,7 @@ public class Application {
   }
 
   //-------------------------
-  // NEWCODE: Prompts whether a player wants to enter real name
+  //  Prompts whether a player wants to enter real name
   //-------------------------
   public static void promptRealName(Player aPlayer) {
     System.out.print("\n\t\t Would you like to enter your real name? (Y/N): ");
@@ -215,7 +215,7 @@ public class Application {
   }
 
   //-----------------------
-  // NEWCODE: Sets real name for a player
+  //  Sets real name for a player
   //----------------------
   public static void enterRealName(Player aPlayer) {
     String inputName; 
@@ -285,7 +285,7 @@ public class Application {
   //---------------------------------------------
   public static void terminate() {
     //---------------------
-    // NEWCODE: at the end of the game, updates playerlist.txt
+    //  at the end of the game, updates playerlist.txt
     //---------------------
     FileMethods.overwritePlayerListTo("playerlist.csv", playersList);
     System.out.println("PROGRAM ENDED");

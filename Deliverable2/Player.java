@@ -11,7 +11,8 @@ class Player {
   //constructors
 
   // The base constructor that the oter constructors below will call using "this()"
-  public Player(String aFirstName, String aSurname, String aUsername, String aPassword, int intGamesPlayed, int intScore) {
+  public Player(String aFirstName, String aSurname, String aUsername, 
+                  String aPassword, int intGamesPlayed, int intScore) {
     firstName = aFirstName;
     surname = aSurname;
     username = aUsername; 
@@ -22,7 +23,8 @@ class Player {
 
   // the constructor used for creating a player object form the info read from the file
   public Player(String[] infoArray) {
-    this(infoArray[0], infoArray[1], infoArray[2], infoArray[3], Integer.parseInt(infoArray[4]), Integer.parseInt(infoArray[5]));
+    this(infoArray[0], infoArray[1], infoArray[2], infoArray[3], 
+          Integer.parseInt(infoArray[4]), Integer.parseInt(infoArray[5]));
   }
 
   // empty constructor
@@ -68,8 +70,10 @@ class Player {
   }
   public void setScore(int aScore) {
     this.score = aScore;
-  };
-
+  }
+  public void updateScore(int aScore) {
+    this.score += aScore;
+  }
 
   public String toString() {
     String output = firstName + "," + surname + "," + username + "," + password + "," + Integer.toString(gamesPlayed) + "," + Integer.toString(score);

@@ -236,8 +236,7 @@ public class Application {
   //---------------------------------------------
   public static void play() {
     if(isLoggedIn) {
-      //play the game
-      terminate();
+      GameMethods.play(loggedInPlayer);
       return;
     } else {
       System.out.println("\nYou are not logged in yet. Please register or login first. "); 
@@ -257,70 +256,5 @@ public class Application {
     System.out.println("PROGRAM ENDED");
     System.exit(0);
   }
-
-
-
-
-
-
-
-/*
-
-  //--------
-  // TODO: printQerstions methods and associated ones, to print questions and interact based on the array of keywords
-  //--------
-  
-  public static void printQustions(ArrayList<String> randomisedQuestionList) {
-    for (int i = 0; i = randomisedQuestionList.size(); i++) {
-      String[] keywords = randomisedQuestionList.get(i);
-      questionLogic(keywords);
-    }
-  }
-
-
-  //IDEA: might be a good idea to create a question class, and a questionObjectArrayList for future features
-  public static void questionLogic(String[] keywords) {
-    //TODO: randomise keywords[1-4] to String[] rdmKeywords[0-3].
-    System.out.println("\tWhat's the synonym for " + keywords[0] + "? ");
-    System.out.print("\t\t(A) " + rdmKeywords[0] + "\n"
-                    + "\t\t(B) " + rdmKeywords[1] + "\n"
-                    + "\t\t(C) " + rdmKeywords[2] + "\n"
-                    + "\t\t(D) " + rdmKeywords[3] + "\n"
-                    + "\n\t\t\t\tSkip (S)\n"
-                    + "\t\t\t\tMain Menu (M)\n"
-                    + "\t\t\t\tQuit (Q)\n");
-
-    Scanner scan = new Scanner(System.in);
-    char option = 'x';
-    while (option != 'S' || option != 's') {
-      option = scan.next().CharAt(0);
-      case (option) {
-        case 'A': 
-        case 'a':
-          isCorrect(rdmKeywords[0], keywords); 
-          break;
-        case 'B': 
-        case 'b':
-          isCorrect(rdmKeywords[1], keywords); 
-          break;
-        case 'C': 
-        case 'c':
-          isCorrect(rdmKeywords[2], keywords); 
-          break; 
-        case 'D': 
-        case 'd':
-          isCorrect(rdmKeywords[3], keywords); 
-          break;
-        case 'S': 
-        case 's':
-        case 'Q': 
-        case 'q':
-        case 'M': 
-        case 'm':
-      }
-    }
-  }
-
-*/
 
 }

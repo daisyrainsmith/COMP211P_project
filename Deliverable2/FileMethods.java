@@ -1,11 +1,13 @@
-import java.util.Scanner; 
+//
+// PROBLEM: adding element into an arraylist changes all elemts of an arraylist
+// REASON: CLASS variables should not be static
+//The solution is simple - don't use the static keywords for fields in your class unless you actually want the values shared between every instance of that class.
+
+import java.util.*; 
 import java.io.PrintWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class FileMethods {
@@ -53,8 +55,6 @@ public class FileMethods {
     while (inputStream.hasNextLine())
     {
       String nextLine = inputStream.nextLine();
-      //for testing
-      System.out.println("DEBUG: " + nextLine);
       stringList.add(nextLine);
     }
     return stringList;
@@ -117,20 +117,28 @@ public class FileMethods {
     outputStream.close();
   }
 
-  /* TODO: 
   //---------------------
   //to be called by the start of a game instance to return an random set of questions, used by printQuestions() method in Application
   //---------------------
-  public static ArrayList<String> randomQuestions(String fileName) {
-    ArrayList<String> QuestionList = new ArrayList<String>();
-    ArrayList<String> RdmQuestionList = new ArrayList<String>();
+  public static ArrayList<Question> getQuestionsFromFile(String fileName) {
+    int numOfQuestions = 10;
+    ArrayList<String> QuestionStrings = new ArrayList<String>(); 
+    ArrayList<Question> QuestionObjects = new ArrayList<Question>(); 
 
-    QuestionList = readListFromFile(fileName); 
-    //TODO: randomise
-    return RdmQuestionList;
+    QuestionStrings = readListFromFile(fileName); 
+    Collections.shuffle(QuestionStrings);
+
+    // Go through the shuffled list of words and create Question objects for each one. 
+    for (int i = 0; i < numOfQuestions; i++) {
+      //get a string from QuestionStrings and split it
+      String strToSplit = QuestionStrings.get(i); 
+      String[] questionWords = strToSplit.split(",");
+      Question nextQuestion = new Question(questionWords);
+      QuestionObjects.add(nextQuestion); 
+    }
+   return QuestionObjects;
   }
 
-  */
 
 }
 

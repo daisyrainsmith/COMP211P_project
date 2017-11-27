@@ -49,42 +49,20 @@ public class GameMethods {
       switch(option) {
         case 'A':
         case 'a':
-          if (theQuestion.isAnswer(choices[0])) {
-            System.out.println("correct");
-            return true; 
-          } else {
-            System.out.println("wrong");
-            return false; 
-          }   
+          correctOrNot(theQuestion, choices[0]);
+          break;
         case 'B':
         case 'b':
-          if (theQuestion.isAnswer(choices[1])) {
-            System.out.println("correct");
-            return true;
-          } else {
-            System.out.println("wrong");
-            return false; 
-          }          
-          
+          correctOrNot(theQuestion, choices[1]);
+          break;
         case 'C':
         case 'c':
-          if (theQuestion.isAnswer(choices[2])) {
-            System.out.println("correct");
-            return true; 
-          } else {
-            System.out.println("wrong");
-            return false; 
-          }         
-          
+          correctOrNot(theQuestion, choices[2]);
+          break;
         case 'D':
         case 'd':
-          if (theQuestion.isAnswer(choices[3])) {
-            System.out.println("correct");
-            return true; 
-          } else {
-            System.out.println("wrong");
-            return false; 
-          }
+          correctOrNot(theQuestion, choices[3]);
+          break;
         case 'S':
         case 's':
           System.out.println("skipped");
@@ -99,6 +77,16 @@ public class GameMethods {
       } 
     } while (inputError);
     return false; 
+  }
+
+  public static boolean correctOrNot(Question theQuestion, String strChoice) {
+    if (theQuestion.isAnswer(strChoice)) {
+      System.out.println("correct");
+      return true;
+    } else {
+      System.out.println("wrong");
+      return false; 
+    } 
   }
 
 }

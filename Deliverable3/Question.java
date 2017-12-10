@@ -29,7 +29,6 @@ public class Question
   }
   
    public Question() {
-
     this("no question", "no word1", "no word2", "no word3", "no answer");
   }
   

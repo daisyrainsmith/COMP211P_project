@@ -21,11 +21,10 @@ public class GameMethods {
     for (int i = 0; i < questionsList.size(); i++) {
       Question theQuestion = questionsList.get(i);
       System.out.println("\nQuestion " + (i+1) + ": ");
-      //prints the question, returns boolean
+
       boolean correctOrNot = theQuestion.ask();
-      //updates score and results
-      resultsList.add(correctOrNot);
-      if (correctOrNot) {
+      resultsList.add(theQuestion.ask());
+      if (theQuestion.ask()) {
         score++;
       }
       //prints feedback on the answer
@@ -33,17 +32,20 @@ public class GameMethods {
     }
 
     System.out.println("Final score: " + score); 
-    player.updateScore(score);
-    player.playedAGame();
+    Player.updateScore(score);
+    Player.playedAGame();
     
-  } 
-
-  //-----------------
-  // Prints the current score and whether the question answered is correct
-  //------------------
-  public static void feedbackPage(boolean correctOrNot, int score) {
-    System.out.println((correctOrNot? "Correct! " : "Wrong! ") 
-                        + "\tCurrent score: " + score);
+  }  
+  public static boolean correctOrNot(Question theQuestion) {
+    if (theQuestion.ask()) {
+      System.out.println("correct");
+      return true;
+    } else {
+      System.out.println("wrong");
+      return false; 
+    } 
+    
+    
   }
-
 }
+
